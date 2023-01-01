@@ -8,8 +8,8 @@ function App() {
 
 function GridFirst(props) {
     let gridTemplateColumns = '';
-    var count = JSON.parse(props.gridTemplateColumns);
-    var i = 0;
+    let count = JSON.parse(props.gridTemplateColumns);
+    let i = 0;
     if (props.gridTemplateColumns > 0) {
         for (i = 0; i < count; i++) {
             gridTemplateColumns += "auto ";
