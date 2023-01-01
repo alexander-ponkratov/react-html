@@ -1,52 +1,30 @@
-const linkData = [
-    {
-        title: "React - A JavaScript Library for Building User Interfaces",
-        url: "https://reactjs.org",
-        shortUrl: "reactjs.org",
-        excerpt: "React makes it painless to create interactive UIs."
-    },
-    {
-        title: "React (web framework) - Wikipedia",
-        url: "https://en.wikipedia.org/wiki/React_(web_framework)",
-        shortUrl: "en.wikipedia.org › wiki › React_(web_framework)",
-        excerpt: "React is a JavaScript library for building user interfaces."
-    },
-    {
-        title: "React (@reactjs) | Twitter",
-        url: "https://twitter.com/reactjs",
-        shortUrl: "twitter.com › reactjs",
-        excerpt: "The latest Tweets from React (@reactjs)."
-    }
-];
-
-function Link(props) {
+function App() {
     return (
-        <div>
-            <a href={props.url}>{props.title}</a>
-            <div>
-                <h3>{props.shortUrl}</h3>
-            </div>
-            <div>{props.excerpt}</div>
-        </div>
+        <header>
+            <GridFirst maxWidth="1200px" display="grid" gridTemplateColumns="3" />
+        </header>
     );
 }
 
-function App() {
+function GridFirst(props) {
+    let gridTemplateColumns = '';
+    var count = JSON.parse(props.gridTemplateColumns);
+    var i = 0;
+    if (props.gridTemplateColumns > 0) {
+        for (i = 0; i < count; i++) {
+            gridTemplateColumns += "auto ";
+        }
+    }
     return (
-        <section>
-            {linkData.map(function (link) {
-                return (
-                    <Link
-                        key={link.url}
-                        title={link.title}
-                        url={link.url}
-                        shortUrl={link.shortUrl}
-                        excerpt={link.excerpt}
-                    />
-                );
-            })}
-        </section>
-    );
+        <div className="container" style={{
+            maxWidth: props.maxWidth}}>
+            <div className="gridFirst" style={{
+                display: props.display,
+                gridTemplateColumns: gridTemplateColumns}}>
+                {props.maxWidth}
+            </div>
+        </div>
+    )
 }
 
 ReactDOM.render(<App />, document.getElementById("root"));
